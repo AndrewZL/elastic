@@ -1,0 +1,2 @@
+# Diffusion Policy stride defaults (overridden per task job.yaml).
+pause_action_threshold: 0.7

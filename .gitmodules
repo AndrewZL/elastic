@@ -1,0 +1,12 @@
+[submodule "backends/diffusion_policy"]
+	path = backends/diffusion_policy
+	url = https://github.com/real-stanford/diffusion_policy.git
+[submodule "backends/openpi"]
+	path = backends/openpi
+	url = https://github.com/Physical-Intelligence/openpi.git
+[submodule "backends/libero-10-r"]
+	path = backends/libero-10-r
+	url = https://github.com/NVlabs/Libero-10-r.git
+[submodule "verifiers/v-gps"]
+	path = verifiers/v-gps
+	url = https://github.com/nakamotoo/V-GPS.git

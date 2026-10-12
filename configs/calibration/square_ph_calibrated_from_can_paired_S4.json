@@ -1,0 +1,29 @@
+{
+  "calibrated": {
+    "latency_penalty": 0.012725241015084805,
+    "no_finish_penalty": -12.725241015084805,
+    "parallel_penalty": 0.12725241015084807,
+    "terminal_bonus": 12.725241015084805,
+    "verifier_bias": 0.7668898813937383
+  },
+  "meta": {
+    "ref_task": "can_paired",
+    "target_task": "square_ph"
+  },
+  "reference": {
+    "latency_penalty": 0.01,
+    "mu": 0.048578616914976586,
+    "mu_key": "calibration_adv_mean",
+    "parallel_penalty": 0.1,
+    "sigma": 0.17503012349861927,
+    "sigma_key": "calibration_adv_std",
+    "terminal_bonus": 10.0,
+    "verifier_bias": 0.9
+  },
+  "target": {
+    "mu": -0.021459114471124485,
+    "mu_key": "calibration_adv_mean",
+    "sigma": 0.13754562549434968,
+    "sigma_key": "calibration_adv_std"
+  }
+}

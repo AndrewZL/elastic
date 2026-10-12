@@ -1,0 +1,14 @@
+# Paper eval for pusht_obs. python scripts/dp/evaluate.py --config configs/eval/pusht_obs.yaml --stride_checkpoint CKPT --output_dir OUT
+checkpoint: ckpts/pusht_lowdim.ckpt
+episodes: 200
+seed: 10000
+n_envs: 8
+max_steps: 400
+n_vis: 5
+success_threshold: 0.999
+samples: 4
+device: cuda:0
+obstacle: true
+q_path: verifiers/pusht_obs.pth
+use_verifier_reward: true
+parallel_penalty: 0.2707539536144205

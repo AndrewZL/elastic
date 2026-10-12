@@ -1,0 +1,33 @@
+{
+  "calibrated": {
+    "latency_penalty": 0.01250755140867436,
+    "no_finish_penalty": -12.50755140867436,
+    "parallel_penalty": 0.1250755140867436,
+    "terminal_bonus": 12.50755140867436,
+    "verifier_bias": 0.7650038008429564
+  },
+  "meta": {
+    "ref_task": "can_paired",
+    "target_task": "square_mh"
+  },
+  "reference": {
+    "latency_penalty": 0.01,
+    "mu": 0.048578616914976586,
+    "mu_key": "calibration_adv_mean",
+    "parallel_adv_gap_mean": 0.0341,
+    "parallel_adv_gap_source": "results/verifier_probe_can_vs_square.log can_paired live parallel",
+    "parallel_penalty": 0.1,
+    "sigma": 0.17503012349861927,
+    "sigma_key": "calibration_adv_std",
+    "terminal_bonus": 10.0,
+    "verifier_bias": 0.9
+  },
+  "target": {
+    "mu": -0.006599069236489456,
+    "mu_key": "calibration_adv_mean",
+    "parallel_adv_gap_mean": 0.0029,
+    "parallel_adv_gap_source": "results/verifier_probe_can_vs_square.log square_ranking live parallel",
+    "sigma": 0.13993955953459497,
+    "sigma_key": "calibration_adv_std"
+  }
+}

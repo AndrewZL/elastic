@@ -1,0 +1,21 @@
+# Weights / data (download separately; see README)
+*.pth
+*.pt
+*.ckpt
+*.pkl
+*.npz
+.ckpt_cache/
+data/
+results/
+wandb/
+_wandb/
+logs/
+__pycache__/
+*.py[cod]
+.Python
+.egg-info/
+.venv/
+.env
+.cursor/
+.DS_Store
+nohup.out

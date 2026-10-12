@@ -1,0 +1,11 @@
+dataset: verifier_datasets/pusht.pkl
+ref_dataset: verifier_datasets/pusht_ref.pkl
+output: verifiers/pusht.pth
+hidden_dim: 512
+batch_size: 256
+epochs: 50
+lr: 1.0e-4
+td_lambda: 0.7
+anchor_weight: 0.1
+seed: 42
+use_calql: false
