@@ -1,0 +1,30 @@
+{
+  "calibrated": {
+    "latency_penalty": 0.010661901664711452,
+    "no_finish_penalty": -10.661901664711452,
+    "parallel_penalty": 0.10661901664711454,
+    "terminal_bonus": 10.661901664711452,
+    "verifier_bias": 0.8397169191012582
+  },
+  "meta": {
+    "ref_task": "can_paired",
+    "target_task": "can_reverse",
+    "note": "Target rescaled for verifiers/can_reverse_v2.pth (base ckpt retrained on the reversed dataset): sigma multiplied and mu shifted by the change in offline advantage std/mean on each verifier's reference rollouts (old 0.107882/0.002816 -> new 0.149836/-0.003054)."
+  },
+  "reference": {
+    "latency_penalty": 0.01,
+    "mu": 0.05585894021131313,
+    "mu_key": "calibration_adv_mean",
+    "parallel_penalty": 0.1,
+    "sigma": 0.17829797923533516,
+    "sigma_key": "calibration_adv_std",
+    "terminal_bonus": 10.0,
+    "verifier_bias": 0.9
+  },
+  "target": {
+    "mu": 0.05680132902233469,
+    "mu_key": "calibration_adv_mean",
+    "sigma": 0.16722905992039133,
+    "sigma_key": "calibration_adv_std"
+  }
+}

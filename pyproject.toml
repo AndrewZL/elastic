@@ -1,0 +1,17 @@
+[project]
+name = "elastic"
+version = "0.1.0"
+description = "Adaptive stride meta-policy for frozen diffusion and flow-matching policies"
+readme = "README.md"
+requires-python = ">=3.9"
+
+[project.optional-dependencies]
+# Host-side LIBERO launchers (scripts/libero_*.py); the policy and simulator run in docker/pi05.
+pi05 = ["numpy", "pyyaml", "omegaconf", "torch", "websockets", "msgpack"]
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["elastic*", "envs", "verifiers"]

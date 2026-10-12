@@ -1,0 +1,32 @@
+# ELASTIC on pi0.5, LIBERO-10-R: 6 online trials x 10 tasks, then a 20 x 10 held-out eval.
+#   python scripts/pi05/train.py --collect_demos --output_dir data/libero/runs/<name>
+#   python scripts/pi05/eval.py --paper-baselines --stride-run elastic=data/libero/runs/<name>/checkpoints/last_stride_learner.pt
+suite: libero_10
+n_tasks: 10
+task_ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+# Demo trials per task for the offline replay (--collect_demos).
+demo_trials: 10
+online_trials: 6
+online_rotate_every: 1
+num_samples: 10
+baseline_num_steps: 10
+# V-GPS Cal-QL verifier trained on LIBERO-10-R rollouts (VGPS_CalQL_libero10r_npz_b32_drop_zero_success, step 2000).
+# The reward settings below were tuned with this family. Container path; host: data/verifiers/vgps_libero10r/checkpoint_2000.
+vgps_checkpoint: /data/verifiers/vgps_libero10r/checkpoint_2000
+latency_penalty: 0.1
+parallel_penalty: 0.1
+terminal_bonus: 1.0
+no_finish_penalty: -30.0
+verifier_bias: 0.0
+k_subsample_draws: 2
+second_pass_counterfactuals: false
+all_stopped_counterfactuals: false
+offline_pretrain_steps: 5000
+online_updates_per_step: 8
+min_online_transitions: 0
+eval_trials: 20
+baselines:
+  normal_steps: 10
+  bon_samples: 10
+  bon_steps: 10
+  sequential_steps: 18

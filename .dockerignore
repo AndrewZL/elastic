@@ -1,0 +1,5 @@
+# Only docker/pi05/libero.Dockerfile uses the repo as build context, for requirement files.
+*
+!backends/openpi/examples/libero/requirements.txt
+!backends/libero-10-r/requirements.txt
+!backends/openpi/packages/openpi-client/pyproject.toml

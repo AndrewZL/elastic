@@ -1,0 +1,15 @@
+# Paper eval for square_mh. python scripts/dp/evaluate.py --config configs/eval/square_mh.yaml --stride_checkpoint CKPT --output_dir OUT
+checkpoint: ckpts/square_mh_lowdim.ckpt
+episodes: 200
+seed: 10000
+n_envs: 8
+max_steps: 400
+n_vis: 5
+success_threshold: 0.999
+samples: 4
+device: cuda:0
+robomimic_dataset: datasets/square/mh/low_dim_abs.hdf5
+robomimic_obs_keys: object,robot0_eef_pos,robot0_eef_quat,robot0_gripper_qpos
+q_path: verifiers/square.pth
+use_verifier_reward: true
+parallel_penalty: 0.1250755140867436

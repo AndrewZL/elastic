@@ -1,0 +1,57 @@
+# ELASTIC pi0.5 on LIBERO-10-R. Run from the ELASTIC repo root:
+#   SERVER_ARGS="..." CLIENT_ARGS="..." docker compose -f docker/pi05/compose.yml up --abort-on-container-exit
+# scripts/pi05/train.py and scripts/pi05/eval.py set these for you.
+services:
+  runtime:
+    image: ${ELASTIC_LIBERO_IMAGE:-elastic_libero}
+    depends_on:
+      - server
+    init: true
+    tty: true
+    network_mode: host
+    privileged: true
+    runtime: nvidia
+    volumes:
+      - ../../backends/openpi:/app:ro
+      - ../..:/elastic
+      - ../../backends/libero-10-r:/opt/libero:ro
+      - ${ELASTIC_RUNS:-../../data/libero}:/runs
+    environment:
+      - CLIENT_ARGS
+      - PYTHONDONTWRITEBYTECODE=1
+      - MUJOCO_GL=${MUJOCO_GL:-egl}
+      - CUDA_VISIBLE_DEVICES=${GPU_DEVICE_ID:-0}
+      - NVIDIA_VISIBLE_DEVICES=${GPU_DEVICE_ID:-0}
+      - NVIDIA_DRIVER_CAPABILITIES=all
+      - PYTHONPATH=/app/packages/openpi-client/src:/opt/libero:/elastic
+      - LIBERO_CONFIG_PATH=/elastic/configs/libero
+    command: ["/bin/bash", "-c", "source /.venv/bin/activate && python -m elastic.pi05.serving.libero_client $CLIENT_ARGS"]
+  server:
+    image: ${ELASTIC_SERVER_IMAGE:-elastic_pi05_server}
+    init: true
+    tty: true
+    network_mode: host
+    runtime: nvidia
+    volumes:
+      - ../../backends/openpi:/app:ro
+      - ../..:/elastic
+      - ../../verifiers/v-gps:/vgps:ro
+      - ${ELASTIC_DATA:-../../data}:/data:ro
+      - ${OPENPI_DATA_HOME:-~/.cache/openpi}:/openpi_assets
+      - ${ELASTIC_RUNS:-../../data/libero}:/runs
+    environment:
+      - SERVER_ARGS
+      - OPENPI_DATA_HOME=/openpi_assets
+      - TFHUB_CACHE_DIR=/openpi_assets/tfhub
+      - JAX_COMPILATION_CACHE_DIR=${JAX_COMPILATION_CACHE_DIR:-/openpi_assets/jax_cache}
+      - PYTHONPATH=/app/src:/app/packages/openpi-client/src:/elastic
+      - VGPS_ROOT=/vgps
+      - WANDB_API_KEY=${WANDB_API_KEY:-}
+      - WANDB_MODE=${WANDB_MODE:-disabled}
+      - PYTHONUNBUFFERED=1
+      - PYTHONDONTWRITEBYTECODE=1
+      - CUDA_VISIBLE_DEVICES=0
+      - NVIDIA_VISIBLE_DEVICES=${GPU_DEVICE_ID:-0}
+      - NVIDIA_DRIVER_CAPABILITIES=all
+    working_dir: /app
+    command: ["/bin/bash", "-c", "/.venv/bin/python -m elastic.pi05.serving.serve $SERVER_ARGS"]

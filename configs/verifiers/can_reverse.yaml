@@ -1,0 +1,11 @@
+dataset: verifier_datasets/can_reverse_v2.pkl
+ref_dataset: verifier_datasets/can_reverse_v2_ref.pkl
+output: verifiers/can_reverse_v2.pth
+hidden_dim: 512
+batch_size: 256
+epochs: 50
+lr: 1.0e-4
+td_lambda: 0.7
+anchor_weight: 0.1
+seed: 42
+use_calql: false

@@ -1,0 +1,15 @@
+# Paper eval for can_paired. python scripts/dp/evaluate.py --config configs/eval/can_paired.yaml --stride_checkpoint CKPT --output_dir OUT
+checkpoint: ckpts/can_lowdim.ckpt
+episodes: 200
+seed: 10000
+n_envs: 8
+max_steps: 400
+n_vis: 5
+success_threshold: 0.999
+samples: 4
+device: cuda:0
+robomimic_dataset: datasets/can_paired/low_dim.hdf5
+robomimic_obs_keys: object,robot0_eef_pos,robot0_eef_quat,robot0_gripper_qpos
+q_path: verifiers/can_paired.pth
+use_verifier_reward: true
+parallel_penalty: 0.1
